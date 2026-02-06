@@ -1,0 +1,22 @@
+{
+  "$schema": "https://schemas.runtipi.io/dynamic-compose.json",
+  "services": [
+    {
+      "name": "scira",
+      "image": "ghcr.io/zaidmukaddam/scira:latest",
+      "isMain": true,
+      "internalPort": 3000,
+      "restart": "unless-stopped",
+      "volumes": [],
+      "addPorts": [
+        {
+          "hostPort": 3000,
+          "containerPort": 3000,
+          "tcp": true,
+          "udp": true,
+          "interface": "${NETWORK_INTERFACE:-0.0.0.0}"
+        }
+      ]
+    }
+  ]
+}
